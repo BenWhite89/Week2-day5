@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Shapes</title>
+</head>
+<body>
+  <div class='input'>
+
+        <div class='input-box'>
+          <h3 class='heading'>Rectangle</h3>
+          <form id='rectangle-form'>
+            &nbsp&nbspHeight: <input id='rectangle-height' class='box' type="number" name="height-rectangle"><br>
+            &nbsp&nbspWidth: <input id='rectangle-width' class='box' type="number" name="width"><br>
+            <input id='rectangle-submit' class='button' type="submit" value="Insert">
+          </form>
+        </div>
+
+        <div class='input-box'>
+          <h3 class='heading'>Square</h3>
+          <form id ='square-form'>
+            &nbsp&nbspSide: <input id='square-height' class='box' type="number" name="side"><br><br><br>
+            <input id='square-submit' class='button' type="submit" value="Insert">
+          </form>
+        </div>
+
+        <div class='input-box'>
+          <h3 class='heading'>Circle</h3>
+          <form id='circle-form'>
+            &nbsp&nbspRadius: <input id='circle-height' class='box' type="number" name="radius"><br><br><br>
+            <input id='circle-submit' class='button' type="submit" value="Insert">
+          </form>
+        </div>
+
+        <div class='input-box'>
+          <h3 class='heading'>Isoceles Right Triangle</h3>
+          <form id='triangle-form'>
+            &nbsp&nbspBase: <input id='triangle-height' class='box' type="number" name="height-triangle"><br><br><br>
+            <input id='triangle-submit' class='button' type="submit" value="Insert">
+          </form>
+        </div>
+
+      </div>
+
+      <div class='display'>
+        <div class='display-area'>
+
+        </div>
+        <div class='statistics'>
+          <form class='stats-form'>
+            Shape Name: <output class='box op-name' type='text' name="op-name"></output><br>
+            Width: <output class='box op-width' type='number' name="op-width"></output><br>
+            Height: <output class='box op-height' type='number' name="op-height"></output><br>
+            Radius: <output class='box op-radius' type='number' name="op-radius"></output><br>
+            Area: <output class='box op-area' type='number' name="op-area"></output><br>
+            Perimeter: <output class='box op-perimeter' type='number' name="op-perimeter"></output><br>
+          </form>
+        </div>
+      </div>
+</body>
+</html>
