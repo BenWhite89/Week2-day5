@@ -1,53 +1,56 @@
 $(function() {
 
-  let counter = 0;
-
   class Shape {
     height: number;
     width: number;
+    trHeight: number;
+    trWidth: number;
+    x: number;
+    y: number;
     name: string;
-    index: number;
     area: number;
     perimeter: number;
-    shape = this;
     constructor(height: number, width: number) {
       this.height = height;
       this.width = width;
-      this.index = counter
+      this.x = width;
+      this.y = height;
     }
     describe() {
-      $(`.op-name`).append(this.name);
-      $(`.op-width`).append(this.width.toString());
-      $(`.op-height`).append(this.height.toString());
-      $(`.op-radius`).append('');
-      $(`.op-area`).append(this.area.toLocaleString('en', {useGrouping:true}));
-      $(`.op-perimeter`).append((this.perimeter).toLocaleString('en', {useGrouping:true}));
+      $(`.op-name`).text(this.name);
+      $(`.op-width`).text(this.width);
+      $(`.op-height`).text(this.height);
+      $(`.op-radius`).text('');
+      $(`.op-area`).text(this.area);
+      $(`.op-perimeter`).text(this.perimeter);
     }
     draw() {
-      let x = Math.floor(Math.random() * (600-this.width)),
-          y = Math.floor(Math.random() * (600-this.height));
+      let x = Math.floor(Math.random() * (600-this.x)),
+          y = Math.floor(Math.random() * (600-this.y));
 
-        $(".display-area").append(`<div id=${this.index} class='shape ${this.name}'></div>`);
-        $(`#${this.index}`).css({
-          'top': x,
-          'left': y,
-          'height': `${this.height}px`,
-          'width': `${this.width}px`,
-          'z-index': this.index
-        });
-        $(`#${this.index}`).click((event) => {
-          $(`.op-name`).empty();
-          $(`.op-width`).empty();
-          $(`.op-height`).empty();
-          $(`.op-radius`).empty();
-          $(`.op-area`).empty();
-          $(`.op-perimeter`).empty();
-          this.describe();
-        });
-        $(`#${this.index}`).dblclick( (event) => {
-          $(`#${this.index}`).remove();
-        })
-        counter++
+        $(".display-area").append(
+          $(`<div class='shape ${this.name}'></div>`)
+          .css({
+            'top': y,
+            'left': x,
+            'height': `${this.height}px`,
+            'width': `${this.width}px`,
+            'border-bottom-width': `${this.trHeight}px`,
+            'border-right-width': `${this.trWidth}px`,
+          })
+          .click((event) => {
+            $(`.op-name`).empty();
+            $(`.op-width`).empty();
+            $(`.op-height`).empty();
+            $(`.op-radius`).empty();
+            $(`.op-area`).empty();
+            $(`.op-perimeter`).empty();
+            this.describe();
+          })
+          .dblclick( function(event) {
+            this.remove();
+          })
+        )
     }
   }
 
@@ -78,15 +81,16 @@ $(function() {
       this.radius = radius;
       this.height = 2 * radius;
       this.width = 2 * radius;
+      this.x = 2 * radius;
+      this.y = 2 * radius;
       this.area = Math.round((Math.PI * Math.pow(radius, 2) * 100)) / 100;
       this.perimeter = Math.round((Math.PI * radius * 2) * 100) / 100;
     }
     describe() {
       super.describe();
-      let r = this.radius.toString();
       $('.op-height').empty();
       $('.op-width').empty();
-      $(`.op-radius`).append(r);
+      $(`.op-radius`).text(this.radius);
     }
   }
 
@@ -95,19 +99,19 @@ $(function() {
     constructor(base: number) {
       super(base, base);
       this.name = 'Isoceles Right Triangle';
-      this.height = base;
-      this.width = base;
+      this.trHeight = base;
+      this.trWidth = base;
+      this.height = 0;
+      this.width = 0;
+      this.x = base;
+      this.y = base;
       this.area = base * base / 2;
       this.perimeter = Math.round(2 * base + Math.sqrt(Math.pow(base, 2) * 2) * 100) / 100;
     }
-    draw() {
-      super.draw();
-      $(`#${this.index}`).css({
-        'height': '0px',
-        'width': '0px',
-        'border-bottom-width': `${this.height}px`,
-        'border-right-width': `${this.height}px`,
-      });
+    describe() {
+      super.describe();
+      $('.op-height').text(this.trHeight);
+      $('.op-width').text(this.trWidth);
     }
   }
 
